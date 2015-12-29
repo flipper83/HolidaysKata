@@ -24,4 +24,12 @@ public class Employee {
     public void addHolidays(Date employeeIsOut) {
         holidays.add(employeeIsOut);
     }
+
+    public void addHolidays(HolidayPeriod employeeIsOut) {
+
+    }
+
+    public boolean isOnHolidays(HolidayPeriod overlapPeriod) {
+        return false;
+    }
 }
