@@ -14,6 +14,7 @@ public class EmployeeTest {
     public void shouldReturnTrueIfTheWorkerIsOnHolidaysThisDay() {
         Employee employee = new Employee(ANY_EMPLOYEE);
         Date employeeIsOut = givenDayEmployeeIsOut();
+        employee.addHolidays(employeeIsOut);
 
         boolean onHolidays = employee.isOnHolidays(employeeIsOut);
 
