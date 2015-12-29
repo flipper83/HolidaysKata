@@ -1,5 +1,6 @@
 package com.karumi.holidayskata;
 
+import com.karumi.holidayskata.mother.DateMother;
 import org.junit.Test;
 
 import java.util.Calendar;
@@ -13,19 +14,11 @@ public class EmployeeTest {
     @Test
     public void shouldReturnTrueIfTheWorkerIsOnHolidaysThisDay() {
         Employee employee = new Employee(ANY_EMPLOYEE);
-        Date employeeIsOut = givenDayEmployeeIsOut();
+        Date employeeIsOut = DateMother.givenDayEmployeeIsOut();
         employee.addHolidays(employeeIsOut);
 
         boolean onHolidays = employee.isOnHolidays(employeeIsOut);
 
         assertTrue(onHolidays);
-    }
-
-    private Date givenDayEmployeeIsOut() {
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.YEAR, 2015);
-        calendar.set(Calendar.MONTH, Calendar.JANUARY);
-        calendar.set(Calendar.DAY_OF_MONTH, 4);
-        return calendar.getTime();
     }
 }
