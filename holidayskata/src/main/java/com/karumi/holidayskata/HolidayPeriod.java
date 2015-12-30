@@ -10,4 +10,26 @@ public class HolidayPeriod {
         this.startPeriod = startPeriod;
         this.endPeriod = endPeriod;
     }
+
+    public boolean isOverlap(HolidayPeriod overlapPeriod) {
+        if (overlapPeriod.startPeriod.equals(startPeriod)
+                || overlapPeriod.startPeriod.equals(endPeriod)
+                || overlapPeriod.endPeriod.equals(endPeriod)
+                || overlapPeriod.endPeriod.equals(startPeriod)) {
+            return true;
+        }
+
+        if (overlapPeriod.startPeriod.before(endPeriod)
+                && overlapPeriod.startPeriod.after(startPeriod)) {
+            return true;
+        }
+
+        if (startPeriod.before(overlapPeriod.endPeriod)
+                && startPeriod.after(overlapPeriod.startPeriod)) {
+            return true;
+        }
+
+
+        return false;
+    }
 }

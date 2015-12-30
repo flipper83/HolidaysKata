@@ -7,6 +7,7 @@ import java.util.List;
 public class Employee {
     private final String name;
     private List<Date> holidays = new ArrayList<>();
+    private List<HolidayPeriod> holidaysPeriod = new ArrayList<>();
 
     public Employee(String name) {
         this.name = name;
@@ -21,15 +22,20 @@ public class Employee {
         return false;
     }
 
+    public boolean isOnHolidays(HolidayPeriod overlapPeriod) {
+        for (HolidayPeriod holidayPeriod : holidaysPeriod) {
+            if(holidayPeriod.isOverlap(overlapPeriod)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void addHolidays(Date employeeIsOut) {
         holidays.add(employeeIsOut);
     }
 
     public void addHolidays(HolidayPeriod employeeIsOut) {
-
-    }
-
-    public boolean isOnHolidays(HolidayPeriod overlapPeriod) {
-        return false;
+        holidaysPeriod.add(employeeIsOut);
     }
 }
