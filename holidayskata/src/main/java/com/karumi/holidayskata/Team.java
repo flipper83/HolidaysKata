@@ -19,7 +19,7 @@ public class Team {
     public List<Employee> membersAvailables(HolidayPeriod period) {
         List<Employee> availables = new ArrayList<>();
         for (Employee employee : employees) {
-            if(!employee.isOnHolidays(period)) {
+            if (!employee.isOnHolidays(period)) {
                 availables.add(employee);
             }
         }
@@ -27,6 +27,17 @@ public class Team {
     }
 
     public List<Employee> membersAvailables(HolidayPeriod anyPeriod, String roleFilter) {
-        return null;
+        List<Employee> employees = membersAvailables(anyPeriod);
+        return filter(employees, roleFilter);
+    }
+
+    private List<Employee> filter(List<Employee> employees, String roleFilter) {
+        List<Employee> employeeFilter = new ArrayList<>();
+        for (Employee employee : employees) {
+            if (employee.getRole().equals(roleFilter)) {
+                employeeFilter.add(employee);
+            }
+        }
+        return employeeFilter;
     }
 }
