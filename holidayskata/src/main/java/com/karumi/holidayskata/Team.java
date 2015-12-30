@@ -12,16 +12,17 @@ public class Team {
     }
 
     public List<Employee> membersAvailables(Date date) {
+        HolidayPeriod holidayPeriod = new HolidayPeriod(date);
+        return membersAvailables(holidayPeriod);
+    }
+
+    public List<Employee> membersAvailables(HolidayPeriod period) {
         List<Employee> availables = new ArrayList<>();
         for (Employee employee : employees) {
-            if(!employee.isOnHolidays(date)) {
+            if(!employee.isOnHolidays(period)) {
                 availables.add(employee);
             }
         }
         return availables;
-    }
-
-    public List<Employee> membersAvailables(HolidayPeriod overlapPeriod) {
-        return null;
     }
 }
