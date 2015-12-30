@@ -23,6 +23,26 @@ public class TeamTest {
         assertEquals(2, employees.size());
     }
 
+    @Test
+    public void shouldReturnAnyTeamMembersAvailablesForGivenPeriod() {
+        Team team = new Team();
+        HolidayPeriod period = DateMother.givenPeriodEmployeeIsOut();
+        HolidayPeriod periodSecondEmployee = DateMother.givenPeriodOtherEmployeeIsOut();
+        team.addMember(givenEmployee(period));
+        team.addMember(givenEmployee(periodSecondEmployee));
+        HolidayPeriod overlapPeriod = DateMother.givenOverlapPeriod();
+
+        List<Employee> employees = team.membersAvailables(overlapPeriod);
+
+        assertEquals(0, employees.size());
+    }
+
+    private Employee givenEmployee(HolidayPeriod holidayPeriod) {
+        Employee employee = new Employee(ANY_NAME);
+        employee.addHolidays(holidayPeriod);
+        return employee;
+    }
+
     private Employee givenEmployee(Date date) {
         Employee employee = new Employee(ANY_NAME);
         employee.addHolidays(date);

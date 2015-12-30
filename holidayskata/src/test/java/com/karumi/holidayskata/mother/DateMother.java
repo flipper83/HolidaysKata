@@ -19,6 +19,11 @@ public final class DateMother {
         Date end = getDate(Calendar.JANUARY, 11, 2015);
         return new HolidayPeriod(start, end);
     }
+    public static HolidayPeriod givenPeriodOtherEmployeeIsOut() {
+        Date start = getDate(Calendar.JANUARY, 8, 2015);
+        Date end = getDate(Calendar.JANUARY, 12, 2015);
+        return new HolidayPeriod(start, end);
+    }
 
     public static HolidayPeriod givenOverlapPeriod() {
         Date start = getDate(Calendar.JANUARY, 9, 2015);
@@ -33,4 +38,5 @@ public final class DateMother {
         calendar.set(Calendar.DAY_OF_MONTH, day);
         return calendar.getTime();
     }
+
 }

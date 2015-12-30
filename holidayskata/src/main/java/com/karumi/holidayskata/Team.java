@@ -20,4 +20,8 @@ public class Team {
         }
         return availables;
     }
+
+    public List<Employee> membersAvailables(HolidayPeriod overlapPeriod) {
+        return null;
+    }
 }
