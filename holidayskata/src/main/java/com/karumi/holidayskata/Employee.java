@@ -6,24 +6,19 @@ import java.util.List;
 
 public class Employee {
     private final String name;
-    private List<Date> holidays = new ArrayList<>();
-    private List<HolidayPeriod> holidaysPeriod = new ArrayList<>();
+    private List<HolidayPeriod> holidays = new ArrayList<>();
 
     public Employee(String name) {
         this.name = name;
     }
 
     public boolean isOnHolidays(Date date) {
-        for (Date holiday : holidays) {
-            if(date.equals(holiday)) {
-                return true;
-            }
-        }
-        return false;
+        HolidayPeriod holidayPeriod = new HolidayPeriod(date);
+        return isOnHolidays(holidayPeriod);
     }
 
     public boolean isOnHolidays(HolidayPeriod overlapPeriod) {
-        for (HolidayPeriod holidayPeriod : holidaysPeriod) {
+        for (HolidayPeriod holidayPeriod : holidays) {
             if(holidayPeriod.isOverlap(overlapPeriod)) {
                 return true;
             }
@@ -32,10 +27,11 @@ public class Employee {
     }
 
     public void addHolidays(Date employeeIsOut) {
-        holidays.add(employeeIsOut);
+        HolidayPeriod holidayPeriod = new HolidayPeriod(employeeIsOut);
+        holidays.add(holidayPeriod);
     }
 
     public void addHolidays(HolidayPeriod employeeIsOut) {
-        holidaysPeriod.add(employeeIsOut);
+        holidays.add(employeeIsOut);
     }
 }
