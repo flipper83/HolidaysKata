@@ -39,4 +39,8 @@ public final class DateMother {
         return calendar.getTime();
     }
 
+    public static HolidayPeriod givenAnyHolidayPeriod() {
+        Date date = givenAnyDate();
+        return new HolidayPeriod(date);
+    }
 }

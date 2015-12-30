@@ -7,6 +7,7 @@ import java.util.List;
 public class Employee {
     private final String name;
     private List<HolidayPeriod> holidays = new ArrayList<>();
+    private String role;
 
     public Employee(String name) {
         this.name = name;
@@ -33,5 +34,13 @@ public class Employee {
 
     public void addHolidays(HolidayPeriod employeeIsOut) {
         holidays.add(employeeIsOut);
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getRole() {
+        return role;
     }
 }

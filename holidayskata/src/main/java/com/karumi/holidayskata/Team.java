@@ -25,4 +25,8 @@ public class Team {
         }
         return availables;
     }
+
+    public List<Employee> membersAvailables(HolidayPeriod anyPeriod, String roleFilter) {
+        return null;
+    }
 }
